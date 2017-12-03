@@ -6,13 +6,13 @@ public class Monomial{
 
 
   public Monomial(Power factor, Monomial factors){
-      this.factor = factor;
-      this.factors = factors; //pointer to the next monomial
+//      this.factor = factor;
+//      this.factors = factors; //pointer to the next monomial
   }
   
   public Monomial(Monomial mon){
-      this.factor = null;
-      this.factors = mon;
+//      this.factor = null;
+//      this.factors = mon;
   }
   /**
   * The empty monomial interpreted as 1
@@ -21,8 +21,8 @@ public class Monomial{
 
   //make the power a monomial by giving it a neutral factor...
   public Monomial(Power power){
-      this.factor = power;
-      this.factors = ONE;
+//      this.factor = power;
+//      this.factors = ONE;
   }
   
   /**

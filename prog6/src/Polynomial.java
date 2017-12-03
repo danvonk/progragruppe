@@ -5,13 +5,13 @@ public class Polynomial {
     private final Polynomial summands;
 
     public Polynomial(Monomial summand, Polynomial summands) {
-        this.summand = summand;
-        this.summands = summands;
+//        this.summand = summand;
+//        this.summands = summands;
     }
 
     public Polynomial(Polynomial poly) {
-        this.summand = null;
-        this.summands = poly;
+//        this.summand = null;
+//        this.summands = poly;
     }
 
     /**
@@ -19,10 +19,9 @@ public class Polynomial {
      */
     public static final Polynomial ZERO = new Polynomial(null, null);
 
-    //make the monomial a polynomial by adding a neutral element
     public Polynomial(Monomial monomial) {
-        this.summand = monomial;
-        this.summands = ZERO;
+//        this.summand = monomial;
+//        this.summands = ZERO;
     }
 
     /**
@@ -38,10 +37,6 @@ public class Polynomial {
       return new Polynomial(Monomial.parse(splitted[0]));
     }
     return new Polynomial(Monomial.parse(splitted[0]),parse(splitted[1]));
-  }
-
-  boolean isZero() {
-
   }
 
   /*public static void main(String[] args){
