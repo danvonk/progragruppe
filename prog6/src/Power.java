@@ -1,0 +1,58 @@
+public class Power {
+    private final int exponent;
+    private final Literal literal;
+
+    public Power(int exponent, Literal literal) {
+        this.literal = literal;
+        if (exponent > 0) {
+            this.exponent = exponent;
+        } else {
+            this.exponent = 0;
+        }
+
+    }
+
+    public Power(Literal literal) {
+        this.literal = literal;
+        exponent = 1;
+    }
+
+    public Power(Power p) {
+        this.exponent = p.exponent;
+        this.literal = p.literal;
+    }
+
+    /**
+     * Converts an input string to a power
+     * Input
+     *
+     * @param input String representation of literal ^ exponent
+     * @return the resulting power
+     */
+    public static Power parse(String input) {
+        if (input == null || input.equals("")) {
+            return new Power(Literal.parse(""));
+        }
+        String[] splitted = input.split("\\^", 2);
+        if (splitted.length == 1) {
+            return new Power(Literal.parse(splitted[0]));
+        }
+        int exponent = 1;
+        try {
+            exponent = Integer.parseInt(splitted[1]);
+        } catch (NumberFormatException e) {
+            exponent = 1;
+        }
+
+        return new Power(exponent, Literal.parse(splitted[0]));
+
+    }
+
+    public int getExponent() {
+        return exponent;
+    }
+
+    public Literal getLiteral() {
+        return literal;
+    }
+}
