@@ -90,6 +90,7 @@ public class Monomial {
         return toString(builder, mono.factors);
     }
 
+    @Override
     public String toString() {
         return toString(new StringBuilder(), this);
     }

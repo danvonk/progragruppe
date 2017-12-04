@@ -100,6 +100,7 @@ public class Polynomial {
         return toString(builder, poly.summands);
     }
 
+    @Override
     public String toString() {
         return toString(new StringBuilder(), this);
     }

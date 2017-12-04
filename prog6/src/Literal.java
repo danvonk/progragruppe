@@ -69,6 +69,7 @@ public class Literal {
         return type == Typ.VALUE && value == 0;
     }
 
+    @Override
     public String toString() {
       if (type == Typ.VAR) {
           return name;

@@ -72,6 +72,7 @@ public class Power {
         return literal.getType() == Typ.VAR && literal.getName().equals(varName);
     }
 
+    @Override
     public String toString() {
         if (exponent == 0) {
             return "1";
