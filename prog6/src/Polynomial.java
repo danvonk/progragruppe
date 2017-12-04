@@ -133,11 +133,11 @@ public class Polynomial {
             return maxDegree;
         }
         if (poly.summand != null) {
-//            maxDegree = Math.max(maxDegree, poly.summand.getDegree());
-            int summandDegree = poly.summand.getDegree();
-            if (summandDegree > maxDegree) {
-                maxDegree = summandDegree;
-            }
+            maxDegree = Math.max(maxDegree, poly.summand.getDegree());
+//            int summandDegree = poly.summand.getDegree();
+//            if (summandDegree > maxDegree) {
+//                maxDegree = summandDegree;
+//            }
         }
         return getDegree(maxDegree, poly.summands);
     }
@@ -249,25 +249,24 @@ public class Polynomial {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Polynomial p;
         Polynomial q;
-        String[] testValues = {"0", "(-3.1415)", "(-1)*x^3+(3.0)*x*y^2", "x+(-1)^5", "3^5+2^6+(3)*(2)*(5)*(4)", "x", "x^4", "x^2*y*z+2*x+(-3)", "x^2+2*x*y+y^2", "(0.0)*x^1000+(0.0)*x*y*z^100+(0.0)^7", "(0.0)*x^1+(0.0)^0"};
-        int[] expectedDegrees = {0, 0, 3, 1, 0, 1, 4, 4, 2, 0, 0};
+        String[] testValues = {"0","(-3.1415)","(-1)*x^3+(3.0)*x*y^2","x+(-1)^5","3^5+2^6+(3)*(2)*(5)*(4)","x","x^4","x^2*y*z+2*x+(-3)", "x^2+2*x*y+y^2", "(0.0)*x^1000+(0.0)*x*y*z^100+(0.0)^7", "(0.0)*x^1+(0.0)^0"};
+        int[] expectedDegrees = {0,0,3,1,0,1,4,4,2,0,0};
         int i = 0;
-        for (String s : testValues) {
+        for(String s : testValues ){
             System.out.println("----------------------------------------------------------------");
-            System.out.println("Testing polynomial read from " + s + ".");
+            System.out.println("Testing polynomial read from "+s+".");
             p = parse(s);
             System.out.println(p);
-            System.out.println("isZero?: " + p.isZero());
-            System.out.println("degree: " + p.getDegree());
-            System.out.println("degree as expected: " + (p.getDegree() == expectedDegrees[i]));
+            System.out.println("isZero?: "+p.isZero());
+            System.out.println("degree: "+p.getDegree());
+            System.out.println("degree as expected: "+(p.getDegree()==expectedDegrees[i]));
             i++;
-            q = p.substitute("x", 1.);
-            System.out.println("x substituted by 1: " + q);
-            System.out.println("Now it looks like : " + q);
-            System.out.println("x substituted by 1, rest substituted by 0. EVALUATION= " + q.evaluate(0.0));
+            q = p.substitute("x",1.);
+            System.out.println("x substituted by 1: "+q);
+            System.out.println("x substituted by 1, rest substituted by 0: "+q.evaluate(0.0));
         }
     }
 }

@@ -2,6 +2,7 @@
  * This class holds the basic data type of the Polynomial.
  * It can either be a variable or a constant as defined by Typ.
  *
+ * @version 1.0
  * @author dan
  */
 public class Literal {

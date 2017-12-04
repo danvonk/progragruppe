@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9c079b4-567d-4b5b-bb0e-99eca1847d12" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Literal.java" afterPath="$PROJECT_DIR$/src/Literal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Monomial.java" afterPath="$PROJECT_DIR$/src/Monomial.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Polynomial.java" afterPath="$PROJECT_DIR$/src/Polynomial.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Power.java" afterPath="$PROJECT_DIR$/src/Power.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Typ.java" afterPath="$PROJECT_DIR$/src/Typ.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +22,7 @@
       <file leaf-file-name="Monomial.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Monomial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
+            <state relative-caret-position="4320">
               <caret line="252" column="51" lean-forward="false" selection-start-line="252" selection-start-column="47" selection-end-line="252" selection-end-column="51" />
               <folding>
                 <element signature="e#2226#2227#0" expanded="true" />
@@ -39,8 +37,8 @@
       <file leaf-file-name="Power.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Power.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="727">
-              <caret line="142" column="30" lean-forward="false" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,21 +54,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Literal.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Literal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Literal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="112" selection-end-column="7" />
+            <state relative-caret-position="90">
+              <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Polynomial.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Polynomial.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Polynomial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-457">
-              <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+            <state relative-caret-position="144">
+              <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -111,10 +109,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Typ.java" />
-        <option value="$PROJECT_DIR$/src/Literal.java" />
         <option value="$PROJECT_DIR$/src/Power.java" />
         <option value="$PROJECT_DIR$/src/Monomial.java" />
         <option value="$PROJECT_DIR$/src/Polynomial.java" />
+        <option value="$PROJECT_DIR$/src/Literal.java" />
       </list>
     </option>
   </component>
@@ -145,9 +143,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -164,13 +161,15 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -248,12 +247,16 @@
       <workItem from="1512396624854" duration="3273000" />
       <workItem from="1512400030479" duration="51000" />
       <workItem from="1512400189004" duration="9966000" />
-      <workItem from="1512414698483" duration="3257000" />
+      <workItem from="1512414698483" duration="3308000" />
+      <workItem from="1512424309146" duration="265000" />
+      <workItem from="1512424608253" duration="68000" />
+      <workItem from="1512424720403" duration="150000" />
+      <workItem from="1512424897100" duration="202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28541000" />
+    <option name="totallyTimeSpent" value="29277000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
@@ -279,7 +282,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39915523" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -310,6 +313,67 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Polynomial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4014">
+          <caret line="231" column="9" lean-forward="false" selection-start-line="231" selection-start-column="9" selection-end-line="231" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Monomial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4320">
+          <caret line="252" column="51" lean-forward="false" selection-start-line="252" selection-start-column="47" selection-end-line="252" selection-end-column="51" />
+          <folding>
+            <element signature="e#2226#2227#0" expanded="true" />
+            <element signature="e#2267#2268#0" expanded="true" />
+            <element signature="e#3788#3789#0" expanded="true" />
+            <element signature="e#3846#3847#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Power.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Typ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="59" lean-forward="false" selection-start-line="1" selection-start-column="59" selection-end-line="1" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Literal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1782">
+          <caret line="107" column="5" lean-forward="false" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/jdk-9.0.1/lib/src.zip!/java.base/jdk/internal/math/FloatingDecimal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36954">
+          <caret line="2053" column="0" lean-forward="false" selection-start-line="2053" selection-start-column="0" selection-end-line="2053" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Polynomial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4662">
+          <caret line="267" column="17" lean-forward="false" selection-start-line="267" selection-start-column="17" selection-end-line="267" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Monomial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2376">
@@ -635,10 +699,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ListExercise.java" />
     <entry file="file://$PROJECT_DIR$/src/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/Monomial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4320">
+          <caret line="252" column="51" lean-forward="false" selection-start-line="252" selection-start-column="47" selection-end-line="252" selection-end-column="51" />
+          <folding>
+            <element signature="e#2226#2227#0" expanded="true" />
+            <element signature="e#2267#2268#0" expanded="true" />
+            <element signature="e#3788#3789#0" expanded="true" />
+            <element signature="e#3846#3847#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Power.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar:///usr/java/jdk-9.0.1/lib/src.zip!/java.base/jdk/internal/math/FloatingDecimal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="35802">
           <caret line="2053" column="0" lean-forward="false" selection-start-line="2053" selection-start-column="0" selection-end-line="2053" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Polynomial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -651,39 +744,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Power.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="727">
-          <caret line="142" column="30" lean-forward="false" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Literal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="112" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Monomial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="252" column="51" lean-forward="false" selection-start-line="252" selection-start-column="47" selection-end-line="252" selection-end-column="51" />
-          <folding>
-            <element signature="e#2226#2227#0" expanded="true" />
-            <element signature="e#2267#2268#0" expanded="true" />
-            <element signature="e#3788#3789#0" expanded="true" />
-            <element signature="e#3846#3847#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Polynomial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-457">
-          <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
           <folding />
         </state>
       </provider>
