@@ -1,12 +1,14 @@
+/**
+ * Class to represent a Polynomial e.g. 3x^2 + 4x
+ */
 public class Polynomial {
     private Monomial summand;
     private Polynomial summands;
 
     /**
-     * create a new polynomial from these
-     *
-     * @param summand
-     * @param summands
+     * Constructor for Poly
+     * @param summand first term of the poly
+     * @param summands additional terms of the poly
      */
     public Polynomial(Monomial summand, Polynomial summands) {
         this.summand = summand;
@@ -14,9 +16,8 @@ public class Polynomial {
     }
 
     /**
-     * copy constructor
-     *
-     * @param poly
+     * Copy constructor
+     * @param poly the other Poly which will be copied from
      */
     public Polynomial(Polynomial poly) {
         this.summand = poly.summand;
@@ -29,9 +30,8 @@ public class Polynomial {
     public static final Polynomial ZERO = new Polynomial(null, null);
 
     /**
-     * raise monomial to a polynomial with no other parts i.e. x + null
-     *
-     * @param monomial
+     * Constructor assuming there is no following term in the Poly
+     * @param monomial first term of the Poly
      */
     public Polynomial(Monomial monomial) {
         this.summand = monomial;
@@ -54,6 +54,13 @@ public class Polynomial {
     }
 
 
+    /**
+     * Whether the Poly is null e.g. if all the terms are 0
+     * Do not call this function, rather the one with default params i.e. calculate()
+     * @param isZeroSofar defaults to true
+     * @param polynomial defaults to this
+     * @return whether the Poly is null
+     */
     public boolean isZero(boolean isZeroSofar, Polynomial polynomial) {
         if (polynomial == null || !isZeroSofar) {
             //we have reached end of the poly, return
@@ -67,11 +74,21 @@ public class Polynomial {
         return isZero(isZeroSofar, polynomial.summands);
     }
 
+    /**
+     * Whether the Poly is null e.g. if all the terms are 0
+     * @return whether the Poly is null
+     */
     public boolean isZero() {
         return isZero(true, this);
     }
 
 
+    /**
+     * String conversion method. Do not call this function, rather the one with default params i.e. toString()
+     * @param builder pass in a new StringBuilder
+     * @param poly defaults to this
+     * @return the string rep. of this class
+     */
     public String toString(StringBuilder builder, Polynomial poly) {
         if (poly == null) {
             return builder.toString();
@@ -86,16 +103,30 @@ public class Polynomial {
         return toString(builder, poly.summands);
     }
 
+    /**
+     * String conversion method
+     * @return the String representation of the class
+     */
     @Override
     public String toString() {
         return toString(new StringBuilder(), this);
     }
 
 
+    /**
+     * Gets the degree of the Poly
+     * @return degree of the Poly, i.e. the maximum degree of the terms
+     */
     public int getDegree() {
         return getDegree(0, this);
     }
 
+    /**
+     * Gets the degree of the Poly
+     * @param maxDegree defaults to 0
+     * @param poly defaults to this
+     * @return degree of the Poly, i.e. the maximum degree of the terms
+     */
     public int getDegree(int maxDegree, Polynomial poly) {
         if (poly == null) {
             //we've reached the end of the chain, return
@@ -112,6 +143,12 @@ public class Polynomial {
     }
 
 
+    /**
+     * Substitute in a value to the variable
+     * @param toSub Sub into this variable
+     * @param value Sub this value into said variable
+     * @return whether a substitution occurred or not
+     */
     public Polynomial substitute(String toSub, double value) {
         if (substitute(false, toSub, value, this)) {
             //sub occurred, return this
@@ -121,6 +158,14 @@ public class Polynomial {
         }
     }
 
+    /**
+     * Substitute in a value to the variable
+     * Do not call this function, rather the one with default params i.e. substitute()
+     * @param subHappened defaults to false
+     * @param valToSub set by overloaded function. See other method definition
+     * @param poly defaults to this
+     * @return whether a substitution occurred or not
+     */
     public boolean substitute(Boolean subHappened, String toSub, double valToSub, Polynomial poly) {
         if (poly == null) {
             return subHappened;
@@ -133,10 +178,21 @@ public class Polynomial {
         return substitute(subHappened, toSub, valToSub, poly.summands);
     }
 
+    /**
+     * Calculate the value of the Poly. Substitute() must be called first
+     * @return the value of the Poly
+     */
     public double calculate() {
         return calculate(0, this);
     }
 
+    /**
+     * Calculate the value of the Mono. Substitute() must be called first.
+     * Do not call this function, rather the one with default params i.e. calculate()
+     * @param result defaults to 0
+     * @param poly defaults to this
+     * @return the value of the Poly
+     */
     public double calculate(double result, Polynomial poly) {
         if (poly == null) {
             return result;
@@ -147,6 +203,12 @@ public class Polynomial {
         return calculate(result, poly.summands);
     }
 
+
+    /**
+     * In this case ALL variables will be set to:
+     * @param value all Variables will be set to this val
+     * @return whether a substitution occurred or not
+     */
     public Polynomial substitute(double value) {
         if (substitute(false, value, this)) {
             //sub occurred, return null
@@ -156,6 +218,14 @@ public class Polynomial {
         }
     }
 
+    /**
+     * Substitute in a value to the variable.
+     * Do not call this function, rather the one with default params i.e. calculate()
+     * @param subHappened defaults to false
+     * @param valToSub set by overloaded function. See other method definition
+     * @param poly defaults to this
+     * @return whether a substitution occurred or not
+     */
     public boolean substitute(Boolean subHappened, double valToSub, Polynomial poly) {
         if (poly == null) {
             return subHappened;
@@ -168,6 +238,11 @@ public class Polynomial {
         return substitute(subHappened, valToSub, poly.summands);
     }
 
+    /**
+     * In this case ALL variables will be set to:
+     * @param defaultValue all Variables will be set to this val
+     * @return whether a substitution occurred or not
+     */
     public double evaluate(double defaultValue) {
         substitute(defaultValue);
         return calculate();

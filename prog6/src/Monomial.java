@@ -1,28 +1,50 @@
+/**
+ * Represents a Monomial e.g. 3x^2
+ */
 public class Monomial {
-
+    /**
+     * Getter for factor field
+     * @return factor field
+     */
     Power getFactor() {
         return factor;
     }
 
+    /**
+     * Getter for factors field
+     * @return factors field (another monomial)
+     */
     public Monomial getFactors() {
         return factors;
     }
 
     private Power factor;
-
     private Monomial factors;
 
 
+    /**
+     * Constructor for Monomial
+     * @param factor first power in the chain
+     * @param factors additional powers after that...
+     */
     public Monomial(Power factor, Monomial factors) {
         this.factor = factor;
         this.factors = factors;
     }
 
+    /**
+     * Copy constructor for Monomial
+     * @param mon the other Monomial to copy from
+     */
     public Monomial(Monomial mon) {
         this.factors = mon;
         this.factor = null;
     }
 
+    /**
+     * Evaluate the value of this Mono. Substitute() must be called first
+     * @return the value of the Mono
+     */
     public double evaluate() {
         Monomial monos = this;
         double evaluation = 0;
@@ -38,7 +60,10 @@ public class Monomial {
      */
     public static final Monomial ONE = new Monomial(null, null);
 
-    //make the power a monomial by giving it a neutral factor...
+    /**
+     * Constructor for Mono, with no additional terms
+     * @param power the first term of the Mono
+     */
     public Monomial(Power power) {
         this.factor = power;
         this.factors = ONE;
@@ -59,10 +84,20 @@ public class Monomial {
         return new Monomial(Power.parse(splitted[0]), parse(splitted[1]));
     }
 
+    /**
+     * Whether the Mono is null e.g. if there is a 0 factor
+     * @return whether it is zero
+     */
     public boolean isZero() {
         return isZero(true, this);
     }
 
+    /**
+     * Do not call this function, rather use the one with default params i.e. isZero()
+     * @param isZeroSofar defaults to true
+     * @param monomial defaults to this
+     * @return whether the monomial has a value of zero
+     */
     public boolean isZero(boolean isZeroSofar, Monomial monomial) {
         if (monomial == null || !isZeroSofar) {
             //we have reached the end of the monomial, return whatever we have so far
@@ -76,6 +111,13 @@ public class Monomial {
         return isZero(isZeroSofar, monomial.factors);
     }
 
+
+    /**
+     * String conversion method. Do not call this function, rather the one with default params i.e. toString()
+     * @param builder pass in a new StringBuilder
+     * @param mono defaults to this
+     * @return the string rep. of this class
+     */
     public String toString(StringBuilder builder, Monomial mono) {
         if (mono == null) {
             return builder.toString();
@@ -90,15 +132,29 @@ public class Monomial {
         return toString(builder, mono.factors);
     }
 
+    /**
+     * String conversion method
+     * @return the String representation of the class
+     */
     @Override
     public String toString() {
         return toString(new StringBuilder(), this);
     }
 
+    /**
+     * Gets the degree of the Mono
+     * @return 1 if it is a variable (e.g. x) else 0
+     */
     public int getDegree() {
         return getDegree(0, this);
     }
 
+    /**
+     *  Gets the degree of the Mono. Do not call this function, rather the one with default params i.e. getDegree()
+     * @param degreeSum defaults to 0
+     * @param mono defaults to this
+     * @return degree of the Mono
+     */
     public int getDegree(int degreeSum, Monomial mono) {
         if (mono == null) {
             return degreeSum;
@@ -109,10 +165,22 @@ public class Monomial {
         return getDegree(degreeSum, mono.factors);
     }
 
+    /**
+     * Calculate the value of the Mono. Substitute() must be called first
+     * @return the value of the Mono
+     */
     public double calculate() {
         return calculate(true, 0,this);
     }
 
+    /**
+     * Calculate the value of the Mono. Substitute() must be called first.
+     * Do not call this function, rather the one with default params i.e. calculate()
+     * @param firstRun defaults to true
+     * @param result defaults to 0
+     * @param mono defaults to this
+     * @return the value of the Mono
+     */
     public double calculate(boolean firstRun, double result, Monomial mono) {
         if (mono == null) {
             return result;
@@ -127,6 +195,15 @@ public class Monomial {
         return calculate(false, result, mono.factors);
     }
 
+    /**
+     * Substitute in a value to the variable
+     * Do not call this function, rather the one with default params i.e. substitute()
+     * @param subHappened defaults to false
+     * @param varToSub set by overloaded function. See other method definition
+     * @param valToSub set by overloaded function. See other method definition
+     * @param mono defaults to this
+     * @return whether a substitution occurred or not
+     */
     public boolean substitute(Boolean subHappened, String varToSub, double valToSub, Monomial mono) {
         if (mono == null) {
             return subHappened;
@@ -140,11 +217,25 @@ public class Monomial {
         return substitute(subHappened, varToSub, valToSub, mono.factors);
     }
 
+    /**
+     * Substitute in a value to the variable
+     * @param varToSub Sub into this variable
+     * @param valToSub Sub this value into said variable
+     * @return whether a substitution occurred or not
+     */
     public boolean substitute(String varToSub, double valToSub) {
         return substitute(false, varToSub, valToSub, this);
 
     }
 
+    /**
+     * Substitute in a value to the variable.
+     * Do not call this function, rather the one with default params i.e. calculate()
+     * @param subHappened defaults to false
+     * @param valToSub set by overloaded function. See other method definition
+     * @param mono defaults to this
+     * @return whether a substitution occurred or not
+     */
     public boolean substitute(Boolean subHappened, double valToSub, Monomial mono) {
         if (mono == null) {
             return subHappened;
@@ -159,9 +250,9 @@ public class Monomial {
     }
 
     /**
-     * used to make the evaludate() function in Poly work. In this case ALL variables will be set to:
+     * used to make the evaluate() function in Poly work. In this case ALL variables will be set to:
      * @param valToSub all Variables will be set to this val
-     * @return
+     * @return whether a substitution occurred or not
      */
     public boolean substitute(double valToSub) {
         return substitute(false, valToSub, this);
