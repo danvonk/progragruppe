@@ -53,6 +53,7 @@ public class Monomial {
         return false;
     }
 
+    @Override
     public String toString() {
         //TODO: Make recursive
         if (isZero()) {

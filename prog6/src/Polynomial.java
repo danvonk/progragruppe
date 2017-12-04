@@ -69,6 +69,7 @@ public class Polynomial {
 
   }
 
+    @Override
     public String toString() {
         //TODO: Make recursive
         if (isZero()) {

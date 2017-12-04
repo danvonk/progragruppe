@@ -60,6 +60,7 @@ public class Power {
         return literal.isZero() || literal.isZero() && exponent > 0;
     }
 
+    @Override
     public String toString() {
         if (exponent == 0) {
             return "1";
