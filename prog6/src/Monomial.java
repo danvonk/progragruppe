@@ -1,8 +1,16 @@
 public class Monomial {
 
-    private final Power factor;
+    Power getFactor() {
+        return factor;
+    }
 
-    private final Monomial factors;
+    public Monomial getFactors() {
+        return factors;
+    }
+
+    private Power factor;
+
+    private Monomial factors;
 
 
     public Monomial(Power factor, Monomial factors) {
@@ -13,6 +21,16 @@ public class Monomial {
     public Monomial(Monomial mon) {
         this.factors = mon;
         this.factor = null;
+    }
+
+    public double evaluate() {
+        Monomial monos = this;
+        double evaluation = 0;
+        while (monos != null) {
+            evaluation += this.factor.evaluate();
+            monos = this.factors;
+        }
+        return evaluation;
     }
 
     /**
@@ -42,43 +60,52 @@ public class Monomial {
     }
 
     public boolean isZero() {
-        //TODO: Make recursive
-        Monomial entry = this;
-        while (entry != null) {
-            if (entry.isZero()) {
-                return true;
-            }
-            entry = factors;
+        return isZero(true, this);
+    }
+
+    public boolean isZero(boolean isZeroSofar, Monomial monomial) {
+        if (monomial == null || !isZeroSofar) {
+            //we have reached the end of the monomial, return whatever we have so far
+            return  isZeroSofar;
         }
-        return false;
+        if (monomial.factor != null) {
+            if (!monomial.factor.isZero()) {
+                isZeroSofar = false;
+            }
+        }
+        return isZero(isZeroSofar, monomial.factors);
+    }
+    
+    public String toString(StringBuilder builder, Monomial mono) {
+        if (mono == null) {
+            return builder.toString();
+        }
+        if (mono.factor != null) {
+            builder.append(mono.factor);
+            if (mono.factors.factor != null) {
+                //look-ahead for this
+                builder.append("*");
+            }
+        }
+        return toString(builder, mono.factors);
     }
 
     public String toString() {
-        //TODO: Make recursive
-        if (isZero()) {
-            return "1";
-        }
-        StringBuilder builder = new StringBuilder();
-
-        Monomial entry = this;
-        while (entry != null) {
-            builder.append(entry.factor).append("*");
-            entry = entry.factors;
-        }
-        return builder.toString();
+        return toString(new StringBuilder(), this);
     }
 
     public int getDegree() {
-        if (isZero()) {
-            return 0;
+        return getDegree(0, this);
+    }
+
+    public int getDegree(int degreeSum, Monomial mono) {
+        if (mono == null) {
+            return degreeSum;
         }
-        int degreeSum = 0;
-        Monomial entry = this;
-        while (entry != null) {
-            degreeSum += entry.getDegree();
-            entry = entry.factors;
+        if (mono.factor != null) {
+            degreeSum += mono.factor.getDegree();
         }
-        return degreeSum;
+        return getDegree(degreeSum, mono.factors);
     }
 
 }

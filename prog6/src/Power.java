@@ -1,6 +1,6 @@
 public class Power {
-    private final int exponent;
-    private final Literal literal;
+    private int exponent;
+    private Literal literal;
 
     public Power(int exponent, Literal literal) {
         this.literal = literal;
@@ -20,6 +20,14 @@ public class Power {
     public Power(Power p) {
         this.exponent = p.exponent;
         this.literal = p.literal;
+    }
+
+    public void resetLiteral(Literal l) {
+        literal = l;
+    }
+
+    public double evaluate() {
+        return Math.pow(literal.getValue(), exponent);
     }
 
     /**
@@ -57,7 +65,7 @@ public class Power {
     }
 
     public boolean isZero() {
-        return literal.isZero() || literal.isZero() && exponent > 0;
+        return literal.isZero() || (literal.isZero() && exponent > 0);
     }
 
     public String toString() {

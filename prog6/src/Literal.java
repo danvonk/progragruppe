@@ -23,6 +23,13 @@ public class Literal {
         this.name = toCopy.name;
     }
 
+    /**
+     * change to constant
+     * @param value
+     */
+    public void changeToConstant(double value) {
+    }
+
 
     /**
      * Converts an input string to a literal
