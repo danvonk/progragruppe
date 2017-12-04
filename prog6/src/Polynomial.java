@@ -1,7 +1,5 @@
 public class Polynomial {
-
     private Monomial summand;
-
     private Polynomial summands;
 
     /**
@@ -156,36 +154,60 @@ public class Polynomial {
         }
     }
 
-    //TODO: Make recursive
-    public void substitute(double value) {
-        Polynomial polys = this;
-
-        while (polys != null) {
-            Monomial monos = polys.summand;
-            while (monos != null) {
-                if (monos.getFactor() != null) {
-                    if (monos.getFactor().getLiteral().getType() == Typ.VAR) {
-                        //reset the factor to a literal
-                        monos.getFactor().resetLiteral(new Literal(value));
-                    }
-                } else {
-                    break;
-                }
-
-                monos = monos.getFactors();
-            }
-
-            polys = polys.summands;
+    public Polynomial r_subMain(String toSub, double value) {
+        Boolean sub = false;
+        r_sub(sub, toSub, value, this);
+        if (!sub) {
+            return new Polynomial(this);
+        } else {
+            return null;
         }
-//        if (!containsWantedLiteral) {
-//            return new Polynomial(this);
-//        } else {
-//            return null;
-//        }
     }
 
+    public boolean r_sub(Boolean subHappened, String toSub, double valToSub, Polynomial poly) {
+        if (poly == null) {
+            return subHappened;
+        }
+        if (poly != null) {
+            if (poly.summand.substitute(toSub, valToSub)) {
+                subHappened = true;
+            }
+        }
+        return r_sub(subHappened, toSub, valToSub, poly.summands);
+    }
+
+
+
+//    //TODO: Make recursive
+//    public void substitute(double value) {
+//        Polynomial polys = this;
+//
+//        while (polys != null) {
+//            Monomial monos = polys.summand;
+//            while (monos != null) {
+//                if (monos.getFactor() != null) {
+//                    if (monos.getFactor().getLiteral().getType() == Typ.VAR) {
+//                        //reset the factor to a literal
+//                        monos.getFactor().resetLiteral(new Literal(value));
+//                    }
+//                } else {
+//                    break;
+//                }
+//
+//                monos = monos.getFactors();
+//            }
+//
+//            polys = polys.summands;
+//        }
+////        if (!containsWantedLiteral) {
+////            return new Polynomial(this);
+////        } else {
+////            return null;
+////        }
+//    }
+
     public double calculate() {
-        return calculate(1, this);
+        return calculate(0, this);
     }
 
     public double calculate(double result, Polynomial poly) {
@@ -204,26 +226,24 @@ public class Polynomial {
 
     }
 
-    public static void main(String[] args) {
-        Polynomial p;
-        Polynomial q;
-        String[] testValues = {"0", "(-3.1415)", "(-1)*x^3+(3.0)*x*y^2", "x+(-1)^5", "3^5+2^6+(3)*(2)*(5)*(4)", "x", "x^4", "x^2*y*z+2*x+(-3)", "x^2+2*x*y+y^2", "(0.0)*x^1000+(0.0)*x*y*z^100+(0.0)^7", "(0.0)*x^1+(0.0)^0"};
-        int[] expectedDegrees = {0, 0, 3, 1, 0, 1, 4, 4, 2, 0, 0};
-        int i = 0;
-        for (int j = 0; j < testValues.length; j++) {
-            String s = testValues[j];
-
-            System.out.println("----------------------------------------------------------------");
-            System.out.println("Testing polynomial read from " + s + ".");
-            p = parse(s);
-            System.out.println(p);
-            System.out.println("isZero?: " + p.isZero());
-            System.out.println("degree: " + p.getDegree());
-            System.out.println("degree as expected: " + (p.getDegree() == expectedDegrees[j]));
-            i++;
-            q = p.substitute("x", 1.);
-            System.out.println("x substituted by 1: " + q);
-            System.out.println("x substituted by 1, rest substituted by 0: " + q.evaluate(0.0));
-        }
+   public static void main(String[] args){
+    Polynomial p;
+    Polynomial q;
+    String[] testValues = {"0","(-3.1415)","(-1)*x^3+(3.0)*x*y^2","x+(-1)^5","3^5+2^6+(3)*(2)*(5)*(4)","x","x^4","x^2*y*z+2*x+(-3)", "x^2+2*x*y+y^2", "(0.0)*x^1000+(0.0)*x*y*z^100+(0.0)^7", "(0.0)*x^1+(0.0)^0"};
+    int[] expectedDegrees = {0,0,3,1,0,1,4,4,2,0,0};
+    int i = 0;
+    for(String s : testValues ){
+      System.out.println("----------------------------------------------------------------");
+      System.out.println("Testing polynomial read from "+s+".");
+      p = parse(s);
+      System.out.println(p);
+      System.out.println("isZero?: "+p.isZero());
+      System.out.println("degree: "+p.getDegree());
+      System.out.println("degree as expected: "+(p.getDegree()==expectedDegrees[i]));
+      i++;
+      q = p.substitute("x",1.);
+      System.out.println("x substituted by 1: "+q);
+      System.out.println("x substituted by 1, rest substituted by 0. EVALUATION= "+q.evaluate(0.0));
     }
+  }
 }

@@ -109,17 +109,40 @@ public class Monomial {
     }
 
     public double calculate() {
-        return calculate(0,this);
+        return calculate(true, 0,this);
     }
 
-    public double calculate(double result, Monomial mono) {
+    public double calculate(boolean firstRun, double result, Monomial mono) {
         if (mono == null) {
             return result;
         }
         if (mono.factor != null) {
-            result *= mono.factor.calculate();
+            if (firstRun) {
+                result += mono.factor.calculate();
+            } else {
+                result *= mono.factor.calculate();
+            }
         }
-        return calculate(result, mono.factors);
+        return calculate(false, result, mono.factors);
+    }
+
+    public void substitute(Boolean subHappened, String varToSub, double valToSub, Monomial mono) {
+        if (mono == null) {
+            return;
+        }
+        if (mono.factor != null) {
+            if (mono.factor.isAVariable(varToSub)) {
+                mono.getFactor().resetLiteral(new Literal(valToSub));
+                subHappened = true;
+            }
+        }
+        substitute(subHappened, varToSub, valToSub, mono.factors);
+    }
+
+    public boolean substitute(String varToSub, double valToSub) {
+        Boolean subHappened = Boolean.FALSE;
+        substitute(subHappened, varToSub, valToSub, this);
+        return subHappened;
     }
 
 }
