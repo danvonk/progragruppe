@@ -127,9 +127,9 @@ public class Monomial {
         return calculate(false, result, mono.factors);
     }
 
-    public void substitute(Boolean subHappened, String varToSub, double valToSub, Monomial mono) {
+    public boolean substitute(Boolean subHappened, String varToSub, double valToSub, Monomial mono) {
         if (mono == null) {
-            return;
+            return subHappened;
         }
         if (mono.factor != null) {
             if (mono.factor.isAVariable(varToSub)) {
@@ -137,13 +137,35 @@ public class Monomial {
                 subHappened = true;
             }
         }
-        substitute(subHappened, varToSub, valToSub, mono.factors);
+        return substitute(subHappened, varToSub, valToSub, mono.factors);
     }
 
     public boolean substitute(String varToSub, double valToSub) {
-        Boolean subHappened = Boolean.FALSE;
-        substitute(subHappened, varToSub, valToSub, this);
-        return subHappened;
+        return substitute(false, varToSub, valToSub, this);
+
+    }
+
+    public boolean substitute(Boolean subHappened, double valToSub, Monomial mono) {
+        if (mono == null) {
+            return subHappened;
+        }
+        if (mono.factor != null) {
+            if (mono.factor.getLiteral().getType() == Typ.VAR) {
+                mono.getFactor().resetLiteral(new Literal(valToSub));
+                subHappened = true;
+            }
+        }
+        return substitute(subHappened, valToSub, mono.factors);
+    }
+
+    /**
+     * used to make the evaludate() function in Poly work. In this case ALL variables will be set to:
+     * @param valToSub all Variables will be set to this val
+     * @return
+     */
+    public boolean substitute(double valToSub) {
+        return substitute(false, valToSub, this);
+
     }
 
 }
