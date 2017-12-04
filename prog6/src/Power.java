@@ -55,4 +55,24 @@ public class Power {
     public Literal getLiteral() {
         return literal;
     }
+
+    public boolean isZero() {
+        return literal.isZero() || literal.isZero() && exponent > 0;
+    }
+
+    public String toString() {
+        if (exponent == 0) {
+            return "1";
+        } else if (exponent == 1) {
+            return literal.toString();
+        }
+        return literal.toString() + "^" + exponent;
+    }
+
+    public int getDegree() {
+        if (literal == null) {
+            return 0;
+        }
+        return literal.getDegree() * exponent;
+    }
 }

@@ -4,14 +4,23 @@ public class Polynomial {
 
     private final Polynomial summands;
 
+    /**
+     * create a new polynomial from these
+     * @param summand
+     * @param summands
+     */
     public Polynomial(Monomial summand, Polynomial summands) {
-//        this.summand = summand;
-//        this.summands = summands;
+        this.summand = summand;
+        this.summands = summands;
     }
 
+    /**
+     * copy constructor
+     * @param poly
+     */
     public Polynomial(Polynomial poly) {
-//        this.summand = null;
-//        this.summands = poly;
+        this.summand = poly.summand;
+        this.summands = poly.summands;
     }
 
     /**
@@ -19,9 +28,13 @@ public class Polynomial {
      */
     public static final Polynomial ZERO = new Polynomial(null, null);
 
+    /**
+     * raise monomial to a polynomial with no other parts i.e. x + null
+     * @param monomial
+     */
     public Polynomial(Monomial monomial) {
-//        this.summand = monomial;
-//        this.summands = ZERO;
+        this.summand = monomial;
+        this.summands = ZERO;
     }
 
     /**
@@ -38,6 +51,63 @@ public class Polynomial {
     }
     return new Polynomial(Monomial.parse(splitted[0]),parse(splitted[1]));
   }
+
+    /**
+     *
+     * @return
+     */
+  public boolean isZero() {
+      //TODO: Make recursive
+      Polynomial entry = this;
+      while (entry != null) {
+          if (entry.isZero()) {
+              return true;
+          }
+          entry = summands;
+      }
+      return false;
+
+  }
+
+    public String toString() {
+        //TODO: Make recursive
+        if (isZero()) {
+            return "0";
+        }
+        StringBuilder builder = new StringBuilder();
+
+        Polynomial entry = this;
+        while (entry != null) {
+            builder.append(entry.summand).append("+");
+            entry = entry.summands;
+        }
+        return builder.toString();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getDegree() {
+        int maxDegree = 0;
+        Polynomial entry = this;
+        while (entry != null) {
+            if (entry.getDegree() > maxDegree) {
+                maxDegree = entry.getDegree();
+            }
+            entry = entry.summands;
+        }
+        return maxDegree;
+    }
+
+    /**
+     * replace all variables found in polynomial with the value
+     * @param toSub
+     * @param value
+     * @return
+     */
+    public Polynomial substitute(String toSub, double value) {
+    }
 
   /*public static void main(String[] args){
     Polynomial p;

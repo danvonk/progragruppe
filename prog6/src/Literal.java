@@ -57,4 +57,22 @@ public class Literal {
     public String getName() {
         return name;
     }
+
+    public boolean isZero() {
+        return type == Typ.VALUE && value == 0;
+    }
+
+    public String toString() {
+      if (type == Typ.VAR) {
+          return name;
+      }
+      return "(" + value + ")";
+    }
+
+    public int getDegree() {
+      if (type == Typ.VAR) {
+          return 1;
+      }
+      return 0;
+    }
 }
