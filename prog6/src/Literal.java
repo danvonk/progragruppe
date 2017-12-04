@@ -24,7 +24,7 @@ public class Literal {
      * Constructor assuming the class is a variable
      * @param name of the variable e.g. x
      */
-    public Literal(String name) {
+    private Literal(String name) {
         this.name = name;
         this.type = Typ.VAR;
         this.value = 0;

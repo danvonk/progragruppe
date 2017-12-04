@@ -10,7 +10,7 @@ public class Polynomial {
      * @param summand first term of the poly
      * @param summands additional terms of the poly
      */
-    public Polynomial(Monomial summand, Polynomial summands) {
+    private Polynomial(Monomial summand, Polynomial summands) {
         this.summand = summand;
         this.summands = summands;
     }
@@ -19,7 +19,7 @@ public class Polynomial {
      * Copy constructor
      * @param poly the other Poly which will be copied from
      */
-    public Polynomial(Polynomial poly) {
+    private Polynomial(Polynomial poly) {
         this.summand = poly.summand;
         this.summands = poly.summands;
     }
@@ -27,13 +27,13 @@ public class Polynomial {
     /**
      * The empty polynomial interpreted as 0, which is the default representation.
      */
-    public static final Polynomial ZERO = new Polynomial(null, null);
+    private static final Polynomial ZERO = new Polynomial(null, null);
 
     /**
      * Constructor assuming there is no following term in the Poly
      * @param monomial first term of the Poly
      */
-    public Polynomial(Monomial monomial) {
+    private Polynomial(Monomial monomial) {
         this.summand = monomial;
         this.summands = ZERO;
     }
@@ -42,7 +42,7 @@ public class Polynomial {
      * @param input String representation of polynomial
      * @return the resulting polynomial
      */
-    public static Polynomial parse(String input) {
+    private static Polynomial parse(String input) {
         if (input == null || input.equals("")) {
             return ZERO;
         }
@@ -61,7 +61,7 @@ public class Polynomial {
      * @param polynomial defaults to this
      * @return whether the Poly is null
      */
-    public boolean isZero(boolean isZeroSofar, Polynomial polynomial) {
+    private boolean isZero(boolean isZeroSofar, Polynomial polynomial) {
         if (polynomial == null || !isZeroSofar) {
             //we have reached end of the poly, return
             return isZeroSofar;
@@ -78,7 +78,7 @@ public class Polynomial {
      * Whether the Poly is null e.g. if all the terms are 0
      * @return whether the Poly is null
      */
-    public boolean isZero() {
+    private boolean isZero() {
         return isZero(true, this);
     }
 
@@ -89,7 +89,7 @@ public class Polynomial {
      * @param poly defaults to this
      * @return the string rep. of this class
      */
-    public String toString(StringBuilder builder, Polynomial poly) {
+    private String toString(StringBuilder builder, Polynomial poly) {
         if (poly == null) {
             return builder.toString();
         }
@@ -117,7 +117,7 @@ public class Polynomial {
      * Gets the degree of the Poly
      * @return degree of the Poly, i.e. the maximum degree of the terms
      */
-    public int getDegree() {
+    private int getDegree() {
         return getDegree(0, this);
     }
 
@@ -127,7 +127,7 @@ public class Polynomial {
      * @param poly defaults to this
      * @return degree of the Poly, i.e. the maximum degree of the terms
      */
-    public int getDegree(int maxDegree, Polynomial poly) {
+    private int getDegree(int maxDegree, Polynomial poly) {
         if (poly == null) {
             //we've reached the end of the chain, return
             return maxDegree;
@@ -149,7 +149,7 @@ public class Polynomial {
      * @param value Sub this value into said variable
      * @return whether a substitution occurred or not
      */
-    public Polynomial substitute(String toSub, double value) {
+    private Polynomial substitute(String toSub, double value) {
         if (substitute(false, toSub, value, this)) {
             //sub occurred, return this
             return this;
@@ -166,7 +166,7 @@ public class Polynomial {
      * @param poly defaults to this
      * @return whether a substitution occurred or not
      */
-    public boolean substitute(Boolean subHappened, String toSub, double valToSub, Polynomial poly) {
+    private boolean substitute(Boolean subHappened, String toSub, double valToSub, Polynomial poly) {
         if (poly == null) {
             return subHappened;
         }
@@ -182,7 +182,7 @@ public class Polynomial {
      * Calculate the value of the Poly. Substitute() must be called first
      * @return the value of the Poly
      */
-    public double calculate() {
+    private double calculate() {
         return calculate(0, this);
     }
 
@@ -193,7 +193,7 @@ public class Polynomial {
      * @param poly defaults to this
      * @return the value of the Poly
      */
-    public double calculate(double result, Polynomial poly) {
+    private double calculate(double result, Polynomial poly) {
         if (poly == null) {
             return result;
         }
@@ -209,7 +209,7 @@ public class Polynomial {
      * @param value all Variables will be set to this val
      * @return whether a substitution occurred or not
      */
-    public Polynomial substitute(double value) {
+    private Polynomial substitute(double value) {
         if (substitute(false, value, this)) {
             //sub occurred, return null
             return this;
@@ -226,7 +226,7 @@ public class Polynomial {
      * @param poly defaults to this
      * @return whether a substitution occurred or not
      */
-    public boolean substitute(Boolean subHappened, double valToSub, Polynomial poly) {
+    private boolean substitute(Boolean subHappened, double valToSub, Polynomial poly) {
         if (poly == null) {
             return subHappened;
         }
@@ -243,7 +243,7 @@ public class Polynomial {
      * @param defaultValue all Variables will be set to this val
      * @return whether a substitution occurred or not
      */
-    public double evaluate(double defaultValue) {
+    private double evaluate(double defaultValue) {
         substitute(defaultValue);
         return calculate();
 

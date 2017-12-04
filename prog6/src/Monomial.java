@@ -27,7 +27,7 @@ public class Monomial {
      * @param factor first power in the chain
      * @param factors additional powers after that...
      */
-    public Monomial(Power factor, Monomial factors) {
+    private Monomial(Power factor, Monomial factors) {
         this.factor = factor;
         this.factors = factors;
     }
@@ -58,13 +58,13 @@ public class Monomial {
     /**
      * The empty monomial interpreted as 1
      */
-    public static final Monomial ONE = new Monomial(null, null);
+    private static final Monomial ONE = new Monomial(null, null);
 
     /**
      * Constructor for Mono, with no additional terms
      * @param power the first term of the Mono
      */
-    public Monomial(Power power) {
+    private Monomial(Power power) {
         this.factor = power;
         this.factors = ONE;
     }
@@ -98,7 +98,7 @@ public class Monomial {
      * @param monomial defaults to this
      * @return whether the monomial has a value of zero
      */
-    public boolean isZero(boolean isZeroSofar, Monomial monomial) {
+    private boolean isZero(boolean isZeroSofar, Monomial monomial) {
         if (monomial == null || !isZeroSofar) {
             //we have reached the end of the monomial, return whatever we have so far
             return  isZeroSofar;
@@ -118,7 +118,7 @@ public class Monomial {
      * @param mono defaults to this
      * @return the string rep. of this class
      */
-    public String toString(StringBuilder builder, Monomial mono) {
+    private String toString(StringBuilder builder, Monomial mono) {
         if (mono == null) {
             return builder.toString();
         }
@@ -155,7 +155,7 @@ public class Monomial {
      * @param mono defaults to this
      * @return degree of the Mono
      */
-    public int getDegree(int degreeSum, Monomial mono) {
+    private int getDegree(int degreeSum, Monomial mono) {
         if (mono == null) {
             return degreeSum;
         }
@@ -181,7 +181,7 @@ public class Monomial {
      * @param mono defaults to this
      * @return the value of the Mono
      */
-    public double calculate(boolean firstRun, double result, Monomial mono) {
+    private double calculate(boolean firstRun, double result, Monomial mono) {
         if (mono == null) {
             return result;
         }
@@ -204,7 +204,7 @@ public class Monomial {
      * @param mono defaults to this
      * @return whether a substitution occurred or not
      */
-    public boolean substitute(Boolean subHappened, String varToSub, double valToSub, Monomial mono) {
+    private boolean substitute(Boolean subHappened, String varToSub, double valToSub, Monomial mono) {
         if (mono == null) {
             return subHappened;
         }
@@ -236,7 +236,7 @@ public class Monomial {
      * @param mono defaults to this
      * @return whether a substitution occurred or not
      */
-    public boolean substitute(Boolean subHappened, double valToSub, Monomial mono) {
+    private boolean substitute(Boolean subHappened, double valToSub, Monomial mono) {
         if (mono == null) {
             return subHappened;
         }

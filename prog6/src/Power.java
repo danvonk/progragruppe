@@ -10,7 +10,7 @@ public class Power {
      * @param exponent of the power e.g. 2 to raise to x to x^2
      * @param literal base of the power, e.g. x in x^2
      */
-    public Power(int exponent, Literal literal) {
+    private Power(int exponent, Literal literal) {
         this.literal = literal;
         if (exponent > 0) {
             this.exponent = exponent;
@@ -24,7 +24,7 @@ public class Power {
      * Constructor for Power. The exponent will be assumed to be 1
      * @param literal base of the power, e.g. x in x^1
      */
-    public Power(Literal literal) {
+    private Power(Literal literal) {
         this.literal = literal;
         exponent = 1;
     }
@@ -42,7 +42,7 @@ public class Power {
      * Reset the base to a new one defined by the param
      * @param l the new base
      */
-    public void resetLiteral(Literal l) {
+    void resetLiteral(Literal l) {
         literal = l;
     }
 
