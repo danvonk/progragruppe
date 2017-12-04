@@ -75,7 +75,7 @@ public class Monomial {
         }
         return isZero(isZeroSofar, monomial.factors);
     }
-    
+
     public String toString(StringBuilder builder, Monomial mono) {
         if (mono == null) {
             return builder.toString();
@@ -106,6 +106,20 @@ public class Monomial {
             degreeSum += mono.factor.getDegree();
         }
         return getDegree(degreeSum, mono.factors);
+    }
+
+    public double calculate() {
+        return calculate(0,this);
+    }
+
+    public double calculate(double result, Monomial mono) {
+        if (mono == null) {
+            return result;
+        }
+        if (mono.factor != null) {
+            result *= mono.factor.calculate();
+        }
+        return calculate(result, mono.factors);
     }
 
 }

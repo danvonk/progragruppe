@@ -126,70 +126,82 @@ public class Polynomial {
         return getDegree(maxDegree, poly.summands);
     }
 
-    /**
-     * replace all variable literals found in polynomial with a constant
-     *
-     * @param toSub
-     * @param value
-     * @return
-     */
-    public Polynomial substitute(String toSub, double value) {
-        System.out.println("We need to sub " + toSub + " into " + this.toString());
-        Polynomial polys = this; //iterate through the polynomials
+    //TODO: Make recursive
+    public Polynomial substitute(String toSubstitute, double value) {
+        Polynomial polys = this;
+        boolean containsWantedLiteral = false;
+
         while (polys != null) {
             Monomial monos = polys.summand;
             while (monos != null) {
                 if (monos.getFactor() != null) {
-                    if (monos.getFactor().getLiteral().getName().equals(toSub)) {
-                        //replace with literal
+                    if (monos.getFactor().isAVariable(toSubstitute)) {
+                        //reset the factor to a literal
+                        containsWantedLiteral = true;
                         monos.getFactor().resetLiteral(new Literal(value));
                     }
-                    monos = monos.getFactors();
                 } else {
                     break;
                 }
+
+                monos = monos.getFactors();
             }
+
             polys = polys.summands;
         }
-        return this;
+        if (!containsWantedLiteral) {
+            return new Polynomial(this);
+        } else {
+            return null;
+        }
     }
 
-    /**
-     * overloaded function that replaces ALL variables
-     *
-     * @param value
-     * @return
-     */
-    public Polynomial substitute(double value) {
-        Polynomial polys = this; //iterate through the polynomials
+    //TODO: Make recursive
+    public void substitute(double value) {
+        Polynomial polys = this;
+
         while (polys != null) {
             Monomial monos = polys.summand;
             while (monos != null) {
                 if (monos.getFactor() != null) {
                     if (monos.getFactor().getLiteral().getType() == Typ.VAR) {
-                        //replace with literal
+                        //reset the factor to a literal
                         monos.getFactor().resetLiteral(new Literal(value));
                     }
-                    monos = monos.getFactors();
                 } else {
                     break;
                 }
+
+                monos = monos.getFactors();
             }
+
             polys = polys.summands;
         }
-        return this;
+//        if (!containsWantedLiteral) {
+//            return new Polynomial(this);
+//        } else {
+//            return null;
+//        }
+    }
+
+    public double calculate() {
+        return calculate(1, this);
+    }
+
+    public double calculate(double result, Polynomial poly) {
+        if (poly == null) {
+            return result;
+        }
+        if (poly.summand != null) {
+            result += poly.summand.calculate();
+        }
+        return calculate(result, poly.summands);
     }
 
     public double evaluate(double defaultValue) {
         substitute(defaultValue);
-        double evaluation = 0;
-        evaluation += this.summand.evaluate();
-        Polynomial polys = this.summands;
-        while (polys != null) {
-            evaluation *= polys.summand.evaluate();
-            polys = polys.summands;
-        }
-        return evaluation;
+        return calculate();
+
     }
 
     public static void main(String[] args) {
@@ -198,7 +210,7 @@ public class Polynomial {
         String[] testValues = {"0", "(-3.1415)", "(-1)*x^3+(3.0)*x*y^2", "x+(-1)^5", "3^5+2^6+(3)*(2)*(5)*(4)", "x", "x^4", "x^2*y*z+2*x+(-3)", "x^2+2*x*y+y^2", "(0.0)*x^1000+(0.0)*x*y*z^100+(0.0)^7", "(0.0)*x^1+(0.0)^0"};
         int[] expectedDegrees = {0, 0, 3, 1, 0, 1, 4, 4, 2, 0, 0};
         int i = 0;
-        for (int j = 9; j < testValues.length; j++) {
+        for (int j = 0; j < testValues.length; j++) {
             String s = testValues[j];
 
             System.out.println("----------------------------------------------------------------");
@@ -209,9 +221,9 @@ public class Polynomial {
             System.out.println("degree: " + p.getDegree());
             System.out.println("degree as expected: " + (p.getDegree() == expectedDegrees[j]));
             i++;
-//            q = p.substitute("x", 1.);
-//            System.out.println("x substituted by 1: " + q);
-//            System.out.println("x substituted by 1, rest substituted by 0: " + q.evaluate(0.0));
+            q = p.substitute("x", 1.);
+            System.out.println("x substituted by 1: " + q);
+            System.out.println("x substituted by 1, rest substituted by 0: " + q.evaluate(0.0));
         }
     }
 }

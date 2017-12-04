@@ -68,6 +68,10 @@ public class Power {
         return literal.isZero() || (literal.isZero() && exponent > 0);
     }
 
+    public boolean isAVariable(String varName) {
+        return literal.getType() == Typ.VAR && literal.getName().equals(varName);
+    }
+
     public String toString() {
         if (exponent == 0) {
             return "1";
@@ -82,5 +86,9 @@ public class Power {
             return 0;
         }
         return literal.getDegree() * exponent;
+    }
+
+    public double calculate() {
+        return Math.pow(literal.getValue(), exponent);
     }
 }
