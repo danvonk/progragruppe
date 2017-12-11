@@ -1,4 +1,4 @@
-package util.zufall;
+package zufall;
 
 import java.util.*;
 

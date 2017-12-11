@@ -1,4 +1,4 @@
-package util.io;
+package io;
 
 import java.awt.GraphicsEnvironment;
 import java.util.Scanner;
